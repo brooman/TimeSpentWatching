@@ -8,7 +8,9 @@ import SearchResultContainer from '../SearchResultContainer'
 import Header from '../Header'
 
 const AppContainer = Styled.div`
-  background-image: ${props => props.background ? tmdb.image(props.background) : tmdb.image('/gX8SYlnL9ZznfZwEH4KJUePBFUM.jpg')};
+  background-image: url(${props => tmdb.image(props.background)});
+  background-size: cover;
+  height: 100vh;
 `
 const Container = Styled.div`
   display: flex;
@@ -33,7 +35,8 @@ class App extends React.Component
     timeSpent: 0, //Timespent in minutes
     searchText: "",
     searchResult: null,
-    myShows: null
+    myShows: null,
+    background: '/gX8SYlnL9ZznfZwEH4KJUePBFUM.jpg',
   }
   
   handleInput = async (event) => {
@@ -46,7 +49,7 @@ class App extends React.Component
 
     this.setState({
       searchResult: result,
-      //background: result.results    
+      background: result.results[0] ? result.results[0].backdrop_path : '/gX8SYlnL9ZznfZwEH4KJUePBFUM.jpg'
     });
   }
 
