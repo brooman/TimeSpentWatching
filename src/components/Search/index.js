@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components'
 
-const StyledSearch = styled.input`
+const Search = styled.input`
   border: 3px solid yellow;
   border-radius: 16px;
   background-color: transparent;
@@ -15,16 +14,5 @@ const StyledSearch = styled.input`
     outline: 0;
   }
 `
-
-class Search extends React.Component {
-  render() {
-    return (
-      <StyledSearch 
-        type="text"
-        placeholder={this.props.placeholder}
-      />
-    );
-  }
-}
 
 export default Search;

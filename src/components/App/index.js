@@ -13,9 +13,13 @@ const StyledApp = styled.div`
   padding-top: 20vh;
 `
 
-const searchAPI = query => fetch(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.TMDB_API_KEY}&query=${encodeURIComponent(query)}`);
+const searchAPI = query => {
+  const url = `https://api.themoviedb.org/3/search/tv`;
+  const queryString = `?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${encodeURIComponent(query)}`
+  return fetch(url + queryString).then(res => res.json())
+};
 
-const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 500);
+const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 1000);
 
 class App extends React.Component
 {
@@ -27,7 +31,7 @@ class App extends React.Component
 
   handleInput = async (event) => {
     this.setState({
-      searchText: event.target.value,
+      searchText: event.target.value, 
       searchResult: null
     });
 
@@ -42,11 +46,12 @@ class App extends React.Component
     return (
       <StyledApp id="App">
         <Search 
+          type="text"
           onChange={this.handleInput}
           value={this.state.searchText}
           placeholder="Start searching for TV Show..."
         />
-        <SearchResultContainer></SearchResultContainer>
+        <SearchResultContainer results={this.state.searchResult.results}></SearchResultContainer>
       </StyledApp>
     )
   }
