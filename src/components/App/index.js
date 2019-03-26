@@ -35,7 +35,7 @@ const FlexContainer = Styled.div`
   width: 100%;
 `
 
-const searchAPIDebounced = AwesomeDebouncePromise(tmdb.searchByName, 1000);
+const searchAPIDebounced = AwesomeDebouncePromise(tmdb.searchByName, 500);
 
 class App extends React.Component
 {
