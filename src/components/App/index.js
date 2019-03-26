@@ -23,7 +23,6 @@ const Container = Styled.div`
   align-items: center;
   width: 70vw;
   margin: 0 auto;
-  padding-top: 20vh;
 `
 
 const FlexContainer = Styled.div`
@@ -69,8 +68,7 @@ class App extends React.Component
     return (
       <AppContainer id="App" background={this.state.background ? this.state.background : ''}>
         <Container>
-          {this.state.myShows && <Header time="13 hours" />}
-
+          <Header time="13 hours" />
           <Search 
             type="text"
             onChange={this.handleInput}
