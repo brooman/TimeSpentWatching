@@ -17,6 +17,7 @@ const Text = Styled.p`
   margin-left: 2rem;
   font-size: 2rem;
   color: yellow;
+  text-wrap: wrap;
 `
 
 const Show = props => {
