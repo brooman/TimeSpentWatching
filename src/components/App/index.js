@@ -4,14 +4,19 @@ import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import tmdb from '../../api/tmdb'
 
 import Search from '../Search'
-import SearchResultContainer from '../SearchResultContainer'
+import ShowContainer from '../ShowContainer'
 import Header from '../Header'
 
 const AppContainer = Styled.div`
   background-image: url(${props => tmdb.image(props.background)});
   background-size: cover;
+  background-position: center;
   height: 100vh;
+  transition-property: background;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in;
 `
+
 const Container = Styled.div`
   display: flex;
   flex-direction: column;
@@ -19,6 +24,13 @@ const Container = Styled.div`
   width: 70vw;
   margin: 0 auto;
   padding-top: 20vh;
+`
+
+const FlexContainer = Styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 `
 
 const searchAPI = query => {
@@ -66,7 +78,11 @@ class App extends React.Component
             placeholder="Start searching for TV Show..."
           />
 
-          {this.state.searchResult && <SearchResultContainer results={this.state.searchResult.results} />}
+          <FlexContainer>
+            <ShowContainer title="Search Results" shows={this.state.searchResult ? this.state.searchResult.results : []} />
+            <ShowContainer title="Selected Shows" shows={this.state.myShows ? this.state.myShows : []} />
+          </FlexContainer>
+
         </Container>
       </AppContainer>
     )

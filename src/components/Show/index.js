@@ -6,6 +6,11 @@ const StyledListItem = Styled.li`
   display: flex;
   align-items: center;
   text-decoration: none;
+  margin-bottom: 20px;
+`
+
+const Image = Styled.img`
+  width: 5rem;
 `
 
 const Text = Styled.p`
@@ -14,16 +19,17 @@ const Text = Styled.p`
   color: yellow;
 `
 
-const SearchResult = props => {
+const Show = props => {
   return (
-    <StyledListItem key={props.key}>
+    <StyledListItem>
+      <Image src={props.image} alt={props.name} />
       <Text>{props.name}</Text>
     </StyledListItem>
   );
 };
 
-SearchResult.propTypes = {
+Show.propTypes = {
   name: PropTypes.string
 };
 
-export default SearchResult;
+export default Show;
