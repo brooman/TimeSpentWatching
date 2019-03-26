@@ -10,21 +10,19 @@ const H1 = styled.h1`
   font-size: 2.5rem;
   padding: 0.5rem 1rem;
   color: white;
-  opacity: ${props => props.show ? 1 : 0};
   text-align: center;
 `
 
 const Header = props => {
   return (
-    <H1 show={true}>
-      Total: {props.time}
+    <H1 >
+      Total: {props.time / 60} hours
     </H1>
   );
 };
 
 Header.propTypes = {
-  time: PropTypes.number,
-  show: PropTypes.bool
+  time: PropTypes.number
 };
 
 export default Header;

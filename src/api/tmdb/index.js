@@ -13,9 +13,16 @@ const tmdb = {
   
     return fetch(url + queryString).then(res => res.json())
   },
-  calculateTotalRunTime: (show) => {
-    return show.number_of_episodes * show.episode_run_time[0]
+  calculateTotalRunTime: (shows) => {
+    if(shows.length === 0) return 0;
+
+    const runtimes = shows.map(item => (item.number_of_episodes * item.episode_run_time[0]))
+    
+    const filteredRuntimes = runtimes.filter((item) => !isNaN(item))
+
+    return filteredRuntimes.reduce((acc, cur) => acc + cur)
   }
 }
 
 export default tmdb;
+

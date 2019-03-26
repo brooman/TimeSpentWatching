@@ -84,7 +84,7 @@ class App extends React.Component
     return (
       <AppContainer id="App" background={this.state.background ? this.state.background : ''}>
         <Container>
-          <Header time="13 hours" />
+          <Header time={tmdb.calculateTotalRunTime(this.state.myShows)} />
           <Search 
             type="text"
             onChange={this.handleSearch}
