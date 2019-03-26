@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import Search from '../Search'
+import SearchResultContainer from '../SearchResultContainer'
 
 const StyledApp = styled.div`
   display: flex;
@@ -44,6 +45,7 @@ class App extends React.Component
           value={this.state.searchText}
           placeholder="Start searching for TV Show..."
         />
+        <SearchResultContainer></SearchResultContainer>
       </StyledApp>
     )
   }
