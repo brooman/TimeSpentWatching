@@ -11,7 +11,7 @@ const StyledContainer = Styled.div`
 const PosterContainer = props => {
   return (
     <StyledContainer>
-      {props.posters.map(poster => {
+      {props.posters && props.posters.map(poster => {
         return <Poster posterid={poster.id} image={poster.image} link={poster.link} />
       })}
     </StyledContainer>
