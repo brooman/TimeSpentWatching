@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components'
+import CountUp from 'react-countup'
 
 const H1 = styled.h1`
   border: none;
@@ -16,7 +17,7 @@ const H1 = styled.h1`
 const Header = props => {
   return (
     <H1 >
-      Total: {props.time / 60} hours
+      Total: <CountUp end={props.time / 60} /> hours
     </H1>
   );
 };
