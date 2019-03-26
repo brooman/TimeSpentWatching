@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import Search from '../Search'
 
 const StyledApp = styled.div`
@@ -10,15 +11,29 @@ const StyledApp = styled.div`
   padding-top: 20vh;
 `
 
+const searchAPI = query => fetch(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.TMDB_API_KEY}&query=${encodeURIComponent(query)}`);
+
+const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 500);
+
 class App extends React.Component
 {
   state = {
     data: {},
-    searchText: ""
+    searchText: "",
+    searchResult: {}
   }
 
-  handleInput(event){
-    this.setState({searchText: event.target.value});
+  handleInput = async (event) => {
+    this.setState({
+      searchText: event.target.value,
+      searchResult: null
+    });
+
+    const result = await searchAPIDebounced(this.state.searchText);
+
+    this.setState({
+      searchResult: result
+    });
   }
 
   render(){
