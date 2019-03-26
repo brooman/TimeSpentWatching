@@ -7,7 +7,7 @@ const StyledApp = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  padding-top: 30vh;
+  padding-top: 20vh;
 `
 
 class App extends React.Component
@@ -24,7 +24,11 @@ class App extends React.Component
   render(){
     return (
       <StyledApp id="App">
-        <Search onChange={this.handleInput} value={this.state.searchText} />
+        <Search 
+          onChange={this.handleInput}
+          value={this.state.searchText}
+          placeholder="Start searching for TV Show..."
+        />
       </StyledApp>
     )
   }
