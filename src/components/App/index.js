@@ -43,11 +43,11 @@ class App extends React.Component
     timeSpent: 0, //Timespent in minutes
     searchText: "",
     searchResult: null,
-    myShows: null,
+    myShows: [],
     background: '/gX8SYlnL9ZznfZwEH4KJUePBFUM.jpg',
   }
   
-  handleInput = async (event) => {
+  handleSearch = async (event) => {
     this.setState({
       searchText: event.target.value, 
       searchResult: null
@@ -61,6 +61,25 @@ class App extends React.Component
     });
   }
 
+  handleSave = async (event) => {
+    const filteredArray = this.state.myShows.filter(item => {
+      return item.id !== parseInt(event.target.dataset.id)
+    })
+
+    if(filteredArray.length < this.state.myShows.length)
+    {
+      this.setState({
+        myShows: filteredArray,
+      })
+    } else {
+      const result = await tmdb.getShowById(event.target.dataset.id);
+      
+      this.setState({
+        myShows: [...this.state.myShows, result]
+      }) 
+    }
+  }
+
   render(){
     return (
       <AppContainer id="App" background={this.state.background ? this.state.background : ''}>
@@ -68,14 +87,22 @@ class App extends React.Component
           <Header time="13 hours" />
           <Search 
             type="text"
-            onChange={this.handleInput}
+            onChange={this.handleSearch}
             value={this.state.searchText}
             placeholder="Search tv shows"
           />
 
           <FlexContainer>
-            <ShowContainer title="Search Results" shows={this.state.searchResult ? this.state.searchResult.results : []} />
-            <ShowContainer title="Selected Shows" shows={this.state.myShows ? this.state.myShows : []} />
+            <ShowContainer
+              title="Search Results"
+              handleClick={ this.handleSave }
+              shows={this.state.searchResult ? this.state.searchResult.results : []}
+            />
+            <ShowContainer 
+              title="Selected Shows"
+              handleClick={ this.handleSave }
+              shows={this.state.myShows}
+            />
           </FlexContainer>
 
         </Container>

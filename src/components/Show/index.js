@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Styled from 'styled-components';
 
-const StyledListItem = Styled.li`
+const StyledListItem = Styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   text-decoration: none;
   margin-bottom: 20px;
+  cursor: pointer;
 `
 
 const Image = Styled.img`
@@ -14,16 +16,21 @@ const Image = Styled.img`
 `
 
 const Text = Styled.p`
-  margin-left: 2rem;
   font-size: 2rem;
   color: yellow;
   text-wrap: wrap;
+  text-align: right;
+  max-width: 70%;
 `
-
 const Show = props => {
   return (
-    <StyledListItem>
-      <Image src={props.image} alt={props.name} />
+    <StyledListItem >
+      <Image 
+        onClick={props.handleClick}
+        data-id={props.showid}
+        src={props.image}
+        alt={props.name} 
+      />
       <Text>{props.name}</Text>
     </StyledListItem>
   );

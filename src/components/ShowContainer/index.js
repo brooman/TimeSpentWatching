@@ -22,7 +22,7 @@ const StyledContainer = Styled.ul`
   border-radius: 16px;
   border-top: none;
   padding: 0.5rem 2rem;
-  margin: 1rem 1rem;
+  margin: 1rem 0;
 `
 
 const ScrollContainer = Styled.div`
@@ -39,8 +39,10 @@ const ShowContainer = props => {
           return (
             <Show 
               key={item.id}
+              showid={item.id}
               image={item.poster_path ? tmdb.image(item.poster_path) : 'poster_not_found.png'}
               name={item.name} 
+              handleClick={ props.handleClick }
             />
           )
         })}
