@@ -26,7 +26,7 @@ class App extends React.Component
   state = {
     data: {},
     searchText: "",
-    searchResult: {}
+    searchResult: null
   }
 
   handleInput = async (event) => {
@@ -51,7 +51,7 @@ class App extends React.Component
           value={this.state.searchText}
           placeholder="Start searching for TV Show..."
         />
-        <SearchResultContainer results={this.state.searchResult.results}></SearchResultContainer>
+        {this.state.searchResult && <SearchResultContainer results={this.state.searchResult.results}></SearchResultContainer>}
       </StyledApp>
     )
   }
