@@ -6,7 +6,7 @@ const Search = styled.input`
   background-color: #222;
   width: 100%;
   height: 4rem;
-  font-size: 2.5rem;
+  font-size: 1.67rem;
   padding: 0.5rem 1rem;
   color: white;
 

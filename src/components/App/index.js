@@ -8,10 +8,13 @@ import ShowContainer from '../ShowContainer'
 import Header from '../Header'
 
 const AppContainer = Styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+
   background-image: url(${props => tmdb.image(props.background)});
   background-size: cover;
   background-position: center;
-  height: 100vh;
   transition-property: background;
   transition-duration: 300ms;
   transition-timing-function: ease-in;
@@ -21,14 +24,14 @@ const Container = Styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70vw;
-  margin: 0 auto;
+  margin: 0 20px;
 `
 
 const FlexContainer = Styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
   width: 100%;
 `
 
@@ -73,7 +76,7 @@ class App extends React.Component
             type="text"
             onChange={this.handleInput}
             value={this.state.searchText}
-            placeholder="Start searching for TV Show..."
+            placeholder="Search tv shows"
           />
 
           <FlexContainer>

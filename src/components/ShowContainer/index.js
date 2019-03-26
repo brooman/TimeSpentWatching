@@ -6,7 +6,7 @@ import tmdb from '../../api/tmdb'
 
 const H2 = Styled.h2`
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.67rem;
 `
 
 const StyledContainer = Styled.ul`
@@ -14,14 +14,15 @@ const StyledContainer = Styled.ul`
   list-style: none;
 
   background-color: #222;
+  flex-grow: 1;
+  
+  width: 40%;
+  min-width: 300px;
 
   border-radius: 16px;
   border-top: none;
-
-  width: 100%;
-
   padding: 0.5rem 2rem;
-  margin: 1rem;
+  margin: 1rem 1rem;
 `
 
 const ScrollContainer = Styled.div`
