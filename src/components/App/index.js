@@ -8,7 +8,8 @@ const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  width: 70vw;
+  margin: 0 auto;
   padding-top: 20vh;
 `
 

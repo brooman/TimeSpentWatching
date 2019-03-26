@@ -5,7 +5,7 @@ const StyledSearch = styled.input`
   border: 3px solid yellow;
   border-radius: 16px;
   background-color: transparent;
-  width: 60rem;
+  width: 100%;
   height: 4rem;
   font-size: 2.5rem;
   padding: 0.5rem 1rem;
