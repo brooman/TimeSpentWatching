@@ -35,13 +35,7 @@ const FlexContainer = Styled.div`
   width: 100%;
 `
 
-const searchAPI = query => {
-  const url = `https://api.themoviedb.org/3/search/tv`;
-  const queryString = `?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${encodeURIComponent(query)}`
-  return fetch(url + queryString).then(res => res.json())
-}
-
-const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 1000);
+const searchAPIDebounced = AwesomeDebouncePromise(tmdb.searchByName, 1000);
 
 class App extends React.Component
 {
