@@ -22,7 +22,7 @@ const StyledContainer = Styled.ul`
   border-radius: 16px;
   border-top: none;
   padding: 0.5rem 2rem;
-  margin: 1rem 0;
+  margin: 1rem 1rem;
 `
 
 const ScrollContainer = Styled.div`
